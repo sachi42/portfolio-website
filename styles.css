@@ -146,6 +146,7 @@ a {
   line-height: 0.96;
   letter-spacing: -0.08em;
   max-width: 700px;
+  animation: titleFloat 7s ease-in-out infinite;
 }
 
 .hero-copy h1::after {
@@ -385,6 +386,37 @@ a {
   border-color: rgba(125, 211, 252, 0.28);
 }
 
+.skill-card,
+.award-card,
+.cert-card,
+.timeline-item,
+.education-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::before,
+.award-card::before,
+.cert-card::before,
+.timeline-item::before,
+.education-box::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(120deg, transparent 0%, rgba(125, 211, 252, 0.12) 50%, transparent 100%);
+  transform: translateX(-120%);
+  transition: transform 0.9s ease;
+  pointer-events: none;
+}
+
+.skill-card:hover::before,
+.award-card:hover::before,
+.cert-card:hover::before,
+.timeline-item:hover::before,
+.education-box:hover::before {
+  transform: translateX(120%);
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -458,12 +490,18 @@ a {
   border-radius: 24px;
   padding: 1.5rem;
   box-shadow: 0 12px 24px rgba(2, 6, 23, 0.28);
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  animation: floatCard 7s ease-in-out infinite;
+}
+
+.skill-card:nth-child(2n) {
+  animation-delay: 0.8s;
 }
 
 .skill-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-6px) scale(1.01);
   border-color: rgba(192, 132, 252, 0.3);
+  box-shadow: 0 24px 38px rgba(192, 132, 252, 0.12);
 }
 
 .skill-card h3 {
@@ -495,6 +533,16 @@ a {
   box-shadow: 0 16px 30px rgba(2, 6, 23, 0.28);
   overflow: hidden;
   isolation: isolate;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  animation: floatCard 8s ease-in-out infinite;
+}
+
+.award-card:nth-child(2) {
+  animation-delay: 1.2s;
+}
+
+.award-card:nth-child(3) {
+  animation-delay: 2.4s;
 }
 
 .award-card::before {
@@ -516,6 +564,12 @@ a {
   background: rgba(255,255,255,0.08);
   filter: blur(10px);
   z-index: -1;
+}
+
+.award-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(125, 211, 252, 0.28);
+  box-shadow: 0 28px 48px rgba(56, 189, 248, 0.12);
 }
 
 .award-card h3 {
@@ -604,6 +658,17 @@ a {
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 16px 32px rgba(2, 6, 23, 0.22);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: floatCard 8s ease-in-out infinite;
+}
+
+.cert-card:nth-child(2) {
+  animation-delay: 1.4s;
+}
+
+.cert-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 28px 46px rgba(56, 189, 248, 0.12);
 }
 
 .image-shell {
@@ -622,6 +687,26 @@ a {
   object-fit: contain;
   border: 0;
   background: #f5f5f5;
+}
+
+@keyframes floatCard {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes titleFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
 @media (max-width: 900px) {

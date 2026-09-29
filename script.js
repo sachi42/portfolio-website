@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const revealItems = document.querySelectorAll(
-    '.hero-copy, .hero-card, .section-heading, .about-grid, .timeline-item, .skill-card, .award-card, .education-box'
+    '.hero-copy, .hero-card, .section-heading, .about-grid, .timeline-item, .skill-card, .award-card, .cert-card, .education-box'
   );
 
   const observer = new IntersectionObserver(
